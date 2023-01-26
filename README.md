@@ -1,5 +1,11 @@
 # SpeedTypingApp
 
+---
+
+#### See live: https://chic-cat-2246b2.netlify.app/home
+
+---
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.3.
 
 ## Development server
