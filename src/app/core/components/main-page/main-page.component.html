@@ -1,0 +1,34 @@
+<app-header></app-header>
+
+<div class="game wrapper">
+  <div class="wrapper game-body" [formGroup]='form'>
+    <h3 class='text'>Type the given words within
+      <span class='blue-metallic'>60</span>
+      seconds
+    </h3>
+    <p class='word-to-type'>{{wordToType}}</p>
+
+    <input [readOnly]="showResult" autofocus formControlName='typingWord' (input)="check()" type="text" class='input'
+      [placeholder]="!isPlaying ?'Enter go to start':''">
+
+    <p class='text'>{{message}}</p>
+
+    <!-- <p class='text'>{{'isPlaying: ' + isPlaying}}</p> -->
+    <!-- <p class='text'>{{'typing word: ' + typingWord}}</p>  -->
+
+    <div class="score">
+      <p class='text'>Time Left: {{time}}</p>
+      <p class='text'>Score: {{gameService.score}}</p>
+      <p class='text'>Your Record: {{gameService.recordScore}}</p>
+    </div>
+    <div class="instructions">
+      <h3 class='text'>Instructions</h3>
+      <p class='small-text'>Enter the words that are provided randomly within one minute. You need to enter as many
+        words as possible. Improve your skill in quickly entering words.
+        <br> To start the game, you must enter word <span class='blue-metallic'>"go"</span>
+      </p>
+    </div>
+  </div>
+</div>
+<app-game-result-modal [completeWords]="score" [totalTime]="time" (onClose)="closeResultModal()"
+  *ngIf="showResult"></app-game-result-modal>

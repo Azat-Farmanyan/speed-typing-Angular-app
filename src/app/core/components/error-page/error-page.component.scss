@@ -1,0 +1,13 @@
+.not-found-block {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  .not-bound-body {
+    // max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+}

@@ -1,0 +1,60 @@
+.game {
+  display: flex;
+  align-items: center;
+  .game-body {
+    margin: 0 auto;
+    padding: 25px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 450px;
+    .text {
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 21px;
+      text-align: center;
+    }
+    .word-to-type {
+      margin: 0 auto;
+      font-weight: 400;
+      font-size: 50px;
+      line-height: 70px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      min-height: 70px;
+    }
+    .input {
+      // min-height: 50px;
+      padding: 9px 15px;
+      background-color: var(--white);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 21px;
+      border-radius: 3px;
+    }
+    .score {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 10px;
+    }
+    .instructions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background-color: var(--blue);
+      padding: 20px;
+      .small-text {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 21px;
+        text-align: center;
+      }
+    }
+    .blue-metallic {
+      color: var(--metallicBlue);
+      font-weight: 500;
+    }
+  }
+}
