@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit {
   showResult = false;
   wordToType = 'go';
   form: FormGroup;
-  time = 30;
+  time = 60;
   message = '';
   score = 0;
 
@@ -59,7 +59,7 @@ export class MainPageComponent implements OnInit {
   }
   resetGame() {
     this.isPlaying = false;
-    this.time = 30;
+    this.time = 60;
     this.wordToType = 'go';
     this.form.reset();
     this.score = this.gameService.score;
