@@ -10,7 +10,7 @@
     <p class='word-to-type'>
       <span [ngClass]="{
         'correct-symbol': checkEachChar(i),
-        'error-symbol': !checkEachChar(i)
+        'error-symbol': !checkEachChar(i) && inputWordSplitted.length>i
       }
       " *ngFor="let char of wordToTypeSplitted, let i= index">
         {{char}}
