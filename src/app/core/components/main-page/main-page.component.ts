@@ -71,7 +71,7 @@ export class MainPageComponent implements OnInit {
   }
 
   get inputWordSplitted() {
-    return this.typingWord ? this.typingWord.split('') : '';
+    return this.typingWord ? this.typingWord.toLowerCase().split('') : '';
   }
 
   get wordToTypeSplitted() {
