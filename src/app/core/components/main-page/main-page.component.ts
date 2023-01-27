@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { of } from 'rxjs';
 import { GameService } from '../../services/game.service';
 import { WordsService } from '../../services/words.service';
 
@@ -14,7 +15,6 @@ export class MainPageComponent implements OnInit {
   wordToType = 'go';
   form: FormGroup;
   time = this.getTime;
-  message = '';
   score = 0;
 
   constructor(
@@ -31,6 +31,9 @@ export class MainPageComponent implements OnInit {
   }
   get typingWord(): string {
     return this.form.get('typingWord')?.value;
+  }
+  get inputPlaceholder() {
+    return !this.isPlaying ? 'Enter go to start' : '';
   }
   check() {
     // console.log(this.typingWord);
@@ -53,11 +56,26 @@ export class MainPageComponent implements OnInit {
 
   successWord() {
     if (this.typingWord) {
+      // this.checkEachChar(this.typingWord, this.wordToType);
       if (this.typingWord.trim().toLowerCase() === this.wordToType) {
         this.gameService.incrementScore();
         this.updateWord();
       }
     }
+  }
+
+  checkEachChar(charIndex: number): boolean {
+    return (
+      this.inputWordSplitted[charIndex] === this.wordToTypeSplitted[charIndex]
+    );
+  }
+
+  get inputWordSplitted() {
+    return this.typingWord ? this.typingWord.split('') : '';
+  }
+
+  get wordToTypeSplitted() {
+    return this.wordToType ? this.wordToType.split('') : [];
   }
 
   resetGame() {
@@ -74,7 +92,7 @@ export class MainPageComponent implements OnInit {
   }
 
   get getTime() {
-    return 15;
+    return 60;
   }
 
   updateWord() {

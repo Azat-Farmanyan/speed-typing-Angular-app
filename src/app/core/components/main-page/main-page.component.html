@@ -6,15 +6,19 @@
       <span class='blue-metallic'>{{getTime}}</span>
       seconds
     </h3>
-    <p class='word-to-type'>{{wordToType}}</p>
+    <!-- [ngClass]="{'active': activeFlagIndex===1}" -->
+    <p class='word-to-type'>
+      <span [ngClass]="{
+        'correct-symbol': checkEachChar(i),
+        'error-symbol': !checkEachChar(i)
+      }
+      " *ngFor="let char of wordToTypeSplitted, let i= index">
+        {{char}}
+      </span>
+    </p>
 
     <input [readOnly]="showResult" autofocus formControlName='typingWord' (input)="check()" type="text" class='input'
-      [placeholder]="!isPlaying ?'Enter go to start':''">
-
-    <p class='text'>{{message}}</p>
-
-    <!-- <p class='text'>{{'isPlaying: ' + isPlaying}}</p> -->
-    <!-- <p class='text'>{{'typing word: ' + typingWord}}</p>  -->
+      [placeholder]="inputPlaceholder">
 
     <div class="score">
       <p class='text'>Time Left: {{time}}</p>
