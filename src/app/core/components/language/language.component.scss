@@ -1,0 +1,49 @@
+.bg {
+  // background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.language {
+  position: relative;
+  .flag {
+    width: 48px;
+    height: 34px;
+    border-radius: 3px;
+    cursor: pointer;
+    &:hover {
+      transition: all 0.5s ease;
+      filter: brightness(1.1);
+    }
+  }
+  .language-menu {
+    position: absolute;
+    top: 40px;
+    left: -47px;
+    .language-menu-body {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--white);
+      color: var(--blue);
+      border-radius: 3px;
+      overflow: hidden;
+      .lang-item {
+        // background-color: red;
+        padding: 12px 15px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--metallicBlue);
+          color: var(--white);
+        }
+      }
+      .active {
+        font-weight: bold;
+        background-color: var(--metallicBlue);
+        color: var(--white);
+      }
+    }
+  }
+}

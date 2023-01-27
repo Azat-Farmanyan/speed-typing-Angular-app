@@ -8,6 +8,7 @@ import { MainPageComponent } from './core/components/main-page/main-page.compone
 import { ErrorPageComponent } from './core/components/error-page/error-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GameResultModalComponent } from './core/components/game-result-modal/game-result-modal.component';
+import { LanguageComponent } from './core/components/language/language.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { GameResultModalComponent } from './core/components/game-result-modal/ga
     MainPageComponent,
     ErrorPageComponent,
     GameResultModalComponent,
+    LanguageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule ],
   providers: [],

@@ -1,7 +1,8 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
   background-color: var(--blue);
   padding: 20px;
   .title {

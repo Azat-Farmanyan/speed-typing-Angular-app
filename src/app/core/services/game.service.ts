@@ -15,9 +15,13 @@ export class GameService {
   }
   resetGame() {
     this.scores.push(this.score);
+
+    this.score = 0;
+  }
+
+  checkRecord() {
     if (this.score > this.recordScore) {
       this.recordScore = this.score;
     }
-    this.score = 0;
   }
 }
