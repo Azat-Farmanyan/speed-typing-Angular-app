@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class WordsService {
-  private words = [
+  private englishWords = [
     'ability',
     'able',
     'about',
@@ -1005,11 +1005,12 @@ export class WordsService {
     'yourself',
   ];
   getRandomWord(): string {
-    return this.words[this.getRandomNumber(0, 998)];
+    return this.englishWords[this.getRandomNumber()];
   }
 
-  private getRandomNumber(min: number, max: number): number {
+  private getRandomNumber(min: number = 0, max: number = 998): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
   constructor() {}
 }

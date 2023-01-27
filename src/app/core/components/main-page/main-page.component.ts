@@ -74,7 +74,7 @@ export class MainPageComponent implements OnInit {
   }
 
   get getTime() {
-    return 10;
+    return 15;
   }
 
   updateWord() {
@@ -85,12 +85,6 @@ export class MainPageComponent implements OnInit {
   deleteTypedWord() {
     this.form.get('typingWord')?.reset();
   }
-
-  // downCounter(): void {
-  //   setTimeout(() => {
-  //     this.time--;
-  //   }, 60000);
-  // }
 
   startGameAudio() {
     const audio = new Audio(

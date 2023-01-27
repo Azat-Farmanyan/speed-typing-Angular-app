@@ -30,5 +30,5 @@
     </div>
   </div>
 </div>
-<app-game-result-modal [completeWords]="score" [totalTime]="time" (onClose)="closeResultModal()"
-  *ngIf="showResult"></app-game-result-modal>
+<app-game-result-modal [record]="gameService.recordScore" [completeWords]="score" [totalTime]="time"
+  (onClose)="closeResultModal()" *ngIf="showResult"></app-game-result-modal>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LanguageService } from '../../services/language.service';
 
 @Component({
   selector: 'app-language',
@@ -7,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LanguageComponent implements OnInit {
   menuIsOpen = false;
-  flagPaths = ['armenia.png', 'georgia.png', 'usa.png', 'russia.png'];
-  activeFlagIndex = 1;
-  constructor() {}
+  constructor(private languageService: LanguageService) {}
 
   ngOnInit(): void {}
 
@@ -20,7 +19,19 @@ export class LanguageComponent implements OnInit {
     this.menuIsOpen = false;
   }
   setActiveFlag(flagIndex: number) {
-    this.activeFlagIndex = flagIndex;
+    this.languageService.activeFlagIndex = flagIndex;
     this.closeMenu();
+  }
+
+  get activeFlagIndex() {
+    return this.languageService.activeFlagIndex;
+  }
+
+  get getActiveFlagPath(): string {
+    return '../../../../assets/flags/' + this.getActiveFlagName;
+  }
+
+  get getActiveFlagName(): string {
+    return this.languageService.flagPaths[this.activeFlagIndex];
   }
 }

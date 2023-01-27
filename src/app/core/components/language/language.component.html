@@ -1,14 +1,19 @@
 <div class="language">
-  <img (click)="menuToggle()" class='flag' [src]="'../../../../assets/flags/'+flagPaths[activeFlagIndex]"
-    [alt]="flagPaths[activeFlagIndex]">
+  <img (click)="menuToggle()" class='flag' [src]="getActiveFlagPath" [alt]="getActiveFlagName">
   <div class="language-menu" *ngIf="menuIsOpen">
     <ul class='language-menu-body'>
       <li [ngClass]="{'active': activeFlagIndex===0}" (click)="setActiveFlag(0)" class='lang-item'>
         Հայերեն
       </li>
-      <li [ngClass]="{'active': activeFlagIndex===1}" (click)="setActiveFlag(1)" class='lang-item'>ქართული</li>
-      <li [ngClass]="{'active': activeFlagIndex===2}" (click)="setActiveFlag(2)" class='lang-item'>English</li>
-      <li [ngClass]="{'active': activeFlagIndex===3}" (click)="setActiveFlag(3)" class='lang-item'>Русский</li>
+      <li [ngClass]="{'active': activeFlagIndex===1}" (click)="setActiveFlag(1)" class='lang-item'>
+        ქართული
+      </li>
+      <li [ngClass]="{'active': activeFlagIndex===2}" (click)="setActiveFlag(2)" class='lang-item'>
+        English
+      </li>
+      <li [ngClass]="{'active': activeFlagIndex===3}" (click)="setActiveFlag(3)" class='lang-item'>
+        Русский
+      </li>
     </ul>
   </div>
 </div>

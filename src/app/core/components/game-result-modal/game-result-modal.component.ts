@@ -9,6 +9,7 @@ export class GameResultModalComponent implements OnInit {
   @Output() onClose = new EventEmitter();
   @Input() completeWords: number;
   @Input() totalTime: number;
+  @Input() record: number;
 
   constructor() {}
 

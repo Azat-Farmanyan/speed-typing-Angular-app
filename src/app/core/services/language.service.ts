@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
-
-  constructor() { }
+  flagPaths = ['armenia.png', 'georgia.png', 'usa.png', 'russia.png'];
+  activeFlagIndex = 2;
+  constructor() {}
 }
