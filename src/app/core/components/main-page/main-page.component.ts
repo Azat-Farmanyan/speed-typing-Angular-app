@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { of } from 'rxjs';
+import { BehaviorSubject, of, Subscription } from 'rxjs';
 import { GameService } from '../../services/game.service';
 import { WordsService } from '../../services/words.service';
 
@@ -9,13 +9,16 @@ import { WordsService } from '../../services/words.service';
   templateUrl: './main-page.component.html',
   styleUrls: ['./main-page.component.scss'],
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent implements OnInit, OnDestroy {
   isPlaying = false;
   showResult = false;
   wordToType = 'go';
   form: FormGroup;
-  time = this.getTime;
+  activeTimer = new BehaviorSubject<number>(30);
+  time = 30;
   score = 0;
+
+  activeTimeSubs: Subscription;
 
   constructor(
     public gameService: GameService,
@@ -34,6 +37,17 @@ export class MainPageComponent implements OnInit {
   }
   get inputPlaceholder() {
     return !this.isPlaying ? 'Enter go to start' : '';
+  }
+
+  setTimer(timer: number) {
+    this.activeTimer.next(timer);
+    this.time = timer;
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
   check() {
     // console.log(this.typingWord);
@@ -80,7 +94,10 @@ export class MainPageComponent implements OnInit {
 
   resetGame() {
     this.isPlaying = false;
-    this.time = this.getTime;
+    // this.time = this.getTime();
+    this.activeTimeSubs = this.activeTimer.subscribe((time) => {
+      this.time = time;
+    });
     this.wordToType = 'go';
     this.form.reset();
     this.score = this.gameService.score;
@@ -91,9 +108,9 @@ export class MainPageComponent implements OnInit {
     // console.log(this.gameService.scores);
   }
 
-  get getTime() {
-    return 60;
-  }
+  // getTime(time: number = 60) {
+  //   return 60;
+  // }
 
   updateWord() {
     this.wordToType = this.wordsService.getRandomWord().toLowerCase();
@@ -121,5 +138,9 @@ export class MainPageComponent implements OnInit {
   closeResultModal() {
     this.showResult = false;
     this.form.reset();
+  }
+
+  ngOnDestroy(): void {
+    this.activeTimeSubs.unsubscribe();
   }
 }

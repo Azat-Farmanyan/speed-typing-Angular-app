@@ -3,7 +3,7 @@
 <div class="game wrapper">
   <div class="wrapper game-body" [formGroup]='form'>
     <h3 class='text'>Type the given words within
-      <span class='blue-metallic'>{{getTime}}</span>
+      <span class='blue-metallic'>{{time}}</span>
       seconds
     </h3>
     <!-- [ngClass]="{'active': activeFlagIndex===1}" -->
@@ -31,6 +31,14 @@
         words as possible. Improve your skill in quickly entering words.
         <br> To start the game, you must enter word <span class='blue-metallic'>"go"</span>
       </p>
+    </div>
+    <div class="btns">
+      <h3 class='text'>Timer</h3>
+      <button [ngClass]="{'active': time===30}" (click)="setTimer(30)" class='btn'>30 sec</button>
+      <button [ngClass]="{'active': time===60}" (click)="setTimer(60)" class='btn'>60 sec</button>
+      <button [ngClass]="{'active': time===120}" (click)="setTimer(120)" class='btn'>120 sec</button>
+      <button [ngClass]="{'active': time===300}" (click)="setTimer(300)" class='btn'>300 sec</button>
+      <button [ngClass]="{'active': time===600}" (click)="setTimer(600)" class='btn'>600 sec</button>
     </div>
   </div>
 </div>
